@@ -1,31 +1,5 @@
 ---
 
-- name: "user: add jenkins user"
-  become: yes
-  user: name=jenkins
-
-- name: "user: download authorized key"
-  get_url:
-    url=https://raw.githubusercontent.com/plone/jenkins.plone.org/master/jenkins.plone.org.pub
-    dest=/tmp/jenkins.authorized_keys
-  delegate_to: 127.0.0.1
-
-- name: "user: install authorized key"
-  become: yes
-  become_user: jenkins
-  authorized_key:
-    user=jenkins
-    key="{{ lookup('file', '/tmp/jenkins.authorized_keys') }}"
-
-- name: "user: git config"
-  become: yes
-  become_user: jenkins
-  copy:
-    src=gitconfig
-    dest=/home/jenkins/.gitconfig
-    owner=jenkins
-    group=jenkins
-
 - name: "user: create .buildout main folder"
   become: yes
   become_user: jenkins

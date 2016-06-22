@@ -12,6 +12,7 @@ galaxy_info:
   categories:
   - development
 dependencies:
+ - { role: freitag.jenkins_user }
  - { role: gforcada.compile-python,
      py26: true,
      pillow: true,
