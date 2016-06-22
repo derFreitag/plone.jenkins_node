@@ -74,14 +74,6 @@
     port=443
     proto=tcp
 
-- name: "system: set UFW to allow port 4949 from munin master"
-  become: yes
-  ufw:
-    rule=allow
-    src=162.209.104.107
-    proto=tcp
-    port=4949
-
 # fail2ban
 - name: "system: upload fail2ban jail.local"
   become: yes
