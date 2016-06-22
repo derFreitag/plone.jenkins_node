@@ -5,8 +5,5 @@
 # Configure Jenkins user
 - include: user.yml
 
-# Node.js
-- include: nodejs.yml
-
 # Browsers (firefox, et al)
 - include: browsers.yml
