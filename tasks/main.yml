@@ -5,5 +5,8 @@
 # Configure Jenkins user
 - include: user.yml
 
+# Create virtual environments
+- include: venv.yml
+
 # Browsers (firefox, et al)
 - include: browsers.yml
