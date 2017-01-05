@@ -1,0 +1,23 @@
+---
+
+- name: "JS: install yarn public key (apt)"
+  apt_key:
+    url: "https://dl.yarnpkg.com/debian/pubkey.gpg"
+    state: present
+
+- name: "JS: add yarn apt repository"
+  apt_repository:
+    repo: "deb https://dl.yarnpkg.com/debian/ stable main"
+    state: present
+
+- name: "JS: apt update"
+  become: yes
+  apt:
+    upgrade=dist
+    update_cache=yes
+
+- name: "JS: install yarn"
+  become: yes
+  apt:
+    name=yarn
+    state=present

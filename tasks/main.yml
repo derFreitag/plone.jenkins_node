@@ -10,3 +10,6 @@
 
 # Browsers (firefox, et al)
 - include: browsers.yml
+
+# JavaScript (yarn, et al)
+- include: js.yml
