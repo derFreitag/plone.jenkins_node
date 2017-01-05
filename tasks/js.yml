@@ -16,8 +16,17 @@
     upgrade=dist
     update_cache=yes
 
-- name: "JS: install yarn"
+- name: "JS: install yarn and npm"
   become: yes
   apt:
-    name=yarn
+    name={{item}}
     state=present
+  with_items:
+    - yarn
+    - npm
+
+- name: "JS: add node as an alternative to nodejs"
+  alternatives:
+    name: node
+    path: /usr/bin/nodejs
+    link: /usr/bin/node
