@@ -1,5 +1,9 @@
 ---
 
-firefox_version: 46.0.1-0ubuntu1
+firefox_version: 60.0.2-0ubuntu1
 firefox_file_name: "firefox-mozilla-build_{{ firefox_version }}_amd64.deb"
-firefox_checksum: 5fd1e10590abcebe5227bc3a914e50031d561fc1162995eaccb3fa946688ce1498114b81ea1fe88748d1ad30cefb6001e4a9ecf4d71bd8f4e877c359c80ebda9
+firefox_checksum: 0492610389f9bc1d462b2d521546d80da6e444c5bf5d914d2446e8e862ebd8796a91948bc3e6a37f18ec7a43c0c33c06d4602dddc7ef0f3ac4726225ff87282e
+
+geckodriver_version: 0.20.1
+geckodriver_file_name: "geckodriver-v{{ geckodriver_version }}-linux64.tar.gz"
+geckodriver_checksum: 44ab140541eacb722960ab14463150aec7f189c68ad622643d8951f926d9227366a32183329f7756ba9e738c966c4e0df14750c27da2eb3239a42c74cb27f1dc

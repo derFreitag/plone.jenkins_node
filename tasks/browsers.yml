@@ -44,6 +44,31 @@
     deb="/tmp/{{ firefox_file_name }}"
   when: firefox_is_installed.stdout != 'install' or firefox_installed_version.stdout != '{{ firefox_version }}'
 
+# Geckodriver
+- name: Check if geckodriver is installed
+  shell: geckodriver --version | head -n1 | cut -d" " -f2
+  register: geckodriver_installed_version
+  ignore_errors: True
+
+- name: "Browsers: geckodriver: download"
+  get_url:
+    url="https://github.com/mozilla/geckodriver/releases/download/v{{ geckodriver_version }}/{{ geckodriver_file_name }}"
+    dest=/tmp
+    checksum="sha512:{{ geckodriver_checksum }}"
+  when: geckodriver_installed_version.stdout != '{{ geckodriver_version }}'
+
+- name: "Browsers: geckodriver: install"
+  become: yes
+  unarchive:
+    src: /tmp/{{ geckodriver_file_name }}
+    dest: /usr/local/bin
+    remote_src: yes
+  when: geckodriver_installed_version.stdout != '{{ geckodriver_version }}'
+
+- name: "Browsers: geckodriver: check is installed"
+  shell: geckodriver --version | head -n1 | cut -d" " -f2
+
+
 # PhantomJS
 - name: "Browsers: install PhantomJS"
   become: yes
